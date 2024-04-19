@@ -25,7 +25,14 @@ function App() {
       body: JSON.stringify(user),
     })
       .then((res) => res.json())
-      .then((data) => console.log("Inside post response", data));
+      .then((data) => {
+        console.log("Testing fetch", data);
+
+        const newUsers = [...users, data];
+        setUsers(newUsers);
+
+        form.reset();
+      });
   };
 
   return (
