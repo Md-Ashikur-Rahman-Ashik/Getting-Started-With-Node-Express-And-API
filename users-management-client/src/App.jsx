@@ -16,7 +16,16 @@ function App() {
     const name = form.name.value;
     const email = form.email.value;
     const user = { name, email };
-    console.log("The User is:", user);
+    // console.log("The User is:", user);
+    fetch("http://localhost:5000/users", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(user),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log("Inside post response", data));
   };
 
   return (
